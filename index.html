@@ -7,8 +7,6 @@
 </head>
 <body>
     <script>
-
-
         function getComputerChoice() {
             let num = Math.floor(Math.random() * 3);
 
@@ -25,19 +23,19 @@
         function playRound(humanChoice, computerChoice) {
             switch(humanChoice) {
                 case "rock":
-                    if (computerChoice === "paper") { console.log("You lose."); computerScore++; }
-                    else if (computerChoice==="scissors") { console.log("You win."); humanScore++; }
+                    if (computerChoice === "paper") { console.log("Paper covers rock. You lose."); computerScore++; }
+                    else if (computerChoice==="scissors") { console.log("Rock hits scissors. You win."); humanScore++; }
                     else console.log("It's a tie.");
                     break;
                 case "paper":
                     if (computerChoice === "paper") console.log("It's a tie.")
-                    else if (computerChoice==="scissors") { console.log("You lose."); computerScore++; }
-                    else  { console.log("You win."); humanScore++; }
+                    else if (computerChoice==="scissors") { console.log("Scissors cuts paper. You lose."); computerScore++; }
+                    else  { console.log("Paper covers rock. You win."); humanScore++; }
                     break;
                 case "scissors":
-                    if (computerChoice === "paper")  { console.log("You win."); humanScore++; }
+                    if (computerChoice === "paper")  { console.log("Scissors cuts paper. You win."); humanScore++; }
                     else if (computerChoice==="scissors") console.log("It's a tie.")
-                    else { console.log("You lose."); computerScore++; }
+                    else { console.log("Rock hits scissors. You lose."); computerScore++; }
                     break;
                 default:
                     console.log("huh?")
@@ -45,24 +43,27 @@
         }
 
         function playGame() {
-            
-
-            for (let i = 0; i < 5; i++) {
-                
+            for (let i = 0; i < 5; i++) {  
                 const humanSelection = getHumanChoice();
                 const computerSelection = getComputerChoice();
                 
+                console.log("human selects " + humanSelection);
+                console.log("computer selects " + computerSelection);
+                                
                 playRound(humanSelection, computerSelection);
-                console.log("ROUND" + (i+1) + ": " + humanScore + " to " + computerScore);
+                console.log("ROUND " + (i+1) + ": " + humanScore + " to " + computerScore);
             }
-
         }
+
         let humanScore = 0;
-            let computerScore = 0;
+        let computerScore = 0;
         playGame();
         
+        if (humanScore > computerScore) console.log("FINAL SCORE: HUMAN WINS")
+        else if (computerScore > humanScore) console.log("FINAL SCORE: COMPUTER WINS")
+        else console.log("FINAL SCORE: A TIE");
+        
     </script>
-
 
 </body>
 </html>
