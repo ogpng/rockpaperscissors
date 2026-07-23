@@ -17,14 +17,48 @@
         }
 
         function getHumanChoice() {
-          return prompt("What's your move?");
+          reply = prompt("What's your move?");
+          return reply.toLowerCase();
         }
 
-       
-        console.log(getComputerChoice());
-        console.log(getHumanChoice());
+        function playRound(humanChoice, computerChoice) {
+            switch(humanChoice) {
+                case "rock":
+                    if (computerChoice === "paper") { console.log("You lose."); computerScore++; }
+                    else if (computerChoice==="scissors") { console.log("You win."); humanScore++; }
+                    else console.log("It's a tie.");
+                    break;
+                case "paper":
+                    if (computerChoice === "paper") console.log("It's a tie.")
+                    else if (computerChoice==="scissors") { console.log("You lose."); computerScore++; }
+                    else  { console.log("You win."); humanScore++; }
+                    break;
+                case "scissors":
+                    if (computerChoice === "paper")  { console.log("You win."); humanScore++; }
+                    else if (computerChoice==="scissors") console.log("It's a tie.")
+                    else { console.log("You lose."); computerScore++; }
+                    break;
+                default:
+                    console.log("huh?")
+            }
+        }
+        
+
+        let humanScore = 0;
+        let computerScore = 0;
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        console.log("human choice: " + humanSelection);
+        console.log("comp choice: " + computerSelection);
+
+        
+        playRound(humanSelection, computerSelection);
+        console.log("human: " + humanScore);
+        console.log("computer: " + computerScore);
+
         
     </script>
+
 
 </body>
 </html>
