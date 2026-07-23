@@ -8,6 +8,7 @@
 <body>
     <script>
 
+
         function getComputerChoice() {
             let num = Math.floor(Math.random() * 3);
 
@@ -42,20 +43,23 @@
                     console.log("huh?")
             }
         }
-        
 
+        function playGame() {
+            
+
+            for (let i = 0; i < 5; i++) {
+                
+                const humanSelection = getHumanChoice();
+                const computerSelection = getComputerChoice();
+                
+                playRound(humanSelection, computerSelection);
+                console.log("ROUND" + (i+1) + ": " + humanScore + " to " + computerScore);
+            }
+
+        }
         let humanScore = 0;
-        let computerScore = 0;
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        console.log("human choice: " + humanSelection);
-        console.log("comp choice: " + computerSelection);
-
-        
-        playRound(humanSelection, computerSelection);
-        console.log("human: " + humanScore);
-        console.log("computer: " + computerScore);
-
+            let computerScore = 0;
+        playGame();
         
     </script>
 
